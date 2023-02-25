@@ -19,5 +19,8 @@ runs:
       - run: ls ${{ github.workspace }}
         shell: bash
       - name: Run script file
+        run: chmod +x test.sh
+        shell: bash
+      - name: Run script file
         run: test.sh
         shell: bash
