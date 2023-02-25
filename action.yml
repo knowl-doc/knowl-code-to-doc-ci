@@ -12,9 +12,12 @@ runs:
         shell: bash
       - run: echo "${{inputs.input_one}}"
         shell: bash
+      - run: ls
+        shell: bash
+      - run: ls ${{ github.workspace }}
+        shell: bash
       - name: Run script file
         run: |
-           cd ${{ github.workspace }}
            chmod +x ./test.sh
            ./test.sh
         shell: bash
