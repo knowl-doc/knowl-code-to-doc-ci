@@ -1,70 +1,72 @@
-name: 'Generate AI docs'
-description: 'Generate AI doc'
-
+---
+name: Generate AI docs
+description: Generate AI doc
 inputs:
   KNOWL_USER_EMAIL:
-    description: 'KNOWL_USER_EMAIL'
+    description: KNOWL_USER_EMAIL
     required: true
- KNOWL_USER_PASS:
-    description: 'KNOWL_USER_PASS'
+  KNOWL_USER_PASS:
+    description: KNOWL_USER_PASS
     required: true
- OPENAI_API_KEY:
-    description: 'OPENAI_API_KEY'
+  OPENAI_API_KEY:
+    description: OPENAI_API_KEY
     required: true
-
 env:
-        KNOWL_USER_EMAIL: ${{ inputs.KNOWL_USER_EMAIL }}
-        KNOWL_USER_PASS: ${{ inputs.KNOWL_USER_PASS }}
-        OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
+  KNOWL_USER_EMAIL: ${{ inputs.KNOWL_USER_EMAIL }}
+  KNOWL_USER_PASS: ${{ inputs.KNOWL_USER_PASS }}
+  OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
 runs:
-  using: "composite"
+  using: composite
   steps:
-      - run: echo "hello"
-        shell: bash
-      - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-        shell: bash
-      - name: setup python environment
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-      - name: install python packages
-        run: |
-          python -m pip install --upgrade pip
-          pip install python-dotenv
-          
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v35
-        with:
-          json: "true"
-      - name: List output
-        run: |
-          echo "A: Added"
-          echo ${{ steps.changed-files.outputs.added_files }}
-          echo "M: Modified"
-          echo ${{ steps.changed-files.outputs.modified_files }}
-          echo "C: Copy"
-          echo ${{ steps.changed-files.outputs.copied_files }}
-          echo "R: Rename"
-          echo ${{ steps.changed-files.outputs.renamed_files }}
-          echo "D: Deleted"
-          echo ${{ steps.changed-files.outputs.deleted_files }}
-          echo "U: Unmerged"
-          echo ${{ steps.changed-files.outputs.unmerged_files }}
-      - run: |
-          echo "{\"M\":${{ steps.changed-files.outputs.modified_files }}, \"A\":${{ steps.changed-files.outputs.added_files }}}"
-          echo "{\"M\":${{ steps.changed-files.outputs.modified_files }}, \"A\":${{ steps.changed-files.outputs.added_files }}, \"C\":${{ steps.changed-files.outputs.copied_files }}, \"R\":${{ steps.changed-files.outputs.renamed_files }}, \"D\":${{ steps.changed-files.outputs.deleted_files }}, \"U\":${{ steps.changed-files.outputs.unmerged_files }}}" > files_diff.json
-          echo "--"
-          cat files_diff.json
-      - run: ls
-        shell: bash
-      - run: ls ${{ github.workspace }}
-        shell: bash
-      - run: ls ${{ github.action_path }}
-        shell: bash
-      - name: Run script file
-        run: chmod +x "${{ github.action_path }}/test.sh"
-        shell: bash
-      - name: Run script file
-        run: test.sh
-        shell: bash
+    - run: echo "hello"
+      shell: bash
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - name: setup python environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: install python packages
+      run: |
+        python -m pip install --upgrade pip
+        pip install python-dotenv
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v35
+      with:
+        json: "true"
+    - name: List output
+      run: |
+        echo "A: Added"
+        echo ${{ steps.changed-files.outputs.added_files }}
+        echo "M: Modified"
+        echo ${{ steps.changed-files.outputs.modified_files }}
+        echo "C: Copy"
+        echo ${{ steps.changed-files.outputs.copied_files }}
+        echo "R: Rename"
+        echo ${{ steps.changed-files.outputs.renamed_files }}
+        echo "D: Deleted"
+        echo ${{ steps.changed-files.outputs.deleted_files }}
+        echo "U: Unmerged"
+        echo ${{ steps.changed-files.outputs.unmerged_files }}
+    - run: >
+        echo "{\"M\":${{ steps.changed-files.outputs.modified_files }}, \"A\":${{
+        steps.changed-files.outputs.added_files }}}"
+
+        echo "{\"M\":${{ steps.changed-files.outputs.modified_files }}, \"A\":${{ steps.changed-files.outputs.added_files }}, \"C\":${{ steps.changed-files.outputs.copied_files }}, \"R\":${{ steps.changed-files.outputs.renamed_files }}, \"D\":${{ steps.changed-files.outputs.deleted_files }}, \"U\":${{ steps.changed-files.outputs.unmerged_files }}}" > files_diff.json
+
+        echo "--"
+
+        cat files_diff.json
+    - run: ls
+      shell: bash
+    - run: ls ${{ github.workspace }}
+      shell: bash
+    - run: ls ${{ github.action_path }}
+      shell: bash
+    - name: Run script file
+      run: chmod +x "${{ github.action_path }}/test.sh"
+      shell: bash
+    - name: Run script file
+      run: test.sh
+      shell: bash
