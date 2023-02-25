@@ -62,7 +62,7 @@ runs:
       run: chmod +x "${{ github.action_path }}/test.sh"
       shell: bash
     - name: Run script file
-      run: test.sh
+      run: test.sh ${{ github.workspace }} "files_diff.json"
       shell: bash
       env:
         KNOWL_USER_EMAIL: ${{inputs.KNOWL_USER_EMAIL}}
