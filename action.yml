@@ -1,8 +1,15 @@
 name: 'Generate AI docs'
 description: 'Generate AI doc'
 
+inputs:
+  input_one:
+    description: 'input_one'
+    
 runs:
   using: "composite"
   steps:
       - run: echo "hello"
         shell: bash
+      - run: |
+        echo "input_one: ${{ github.event.inputs.input_one }}"
+
