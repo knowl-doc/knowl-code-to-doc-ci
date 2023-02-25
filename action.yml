@@ -1,4 +1,3 @@
----
 name: Generate AI docs
 description: Generate AI doc
 inputs:
@@ -65,3 +64,7 @@ runs:
     - name: Run script file
       run: test.sh
       shell: bash
+      env:
+        KNOWL_USER_EMAIL: ${{inputs.KNOWL_USER_EMAIL}}
+        KNOWL_USER_PASS: ${{inputs.KNOWL_USER_PASS}}
+        OPENAI_API_KEY: ${{inputs.OPENAI_API_KEY}}
