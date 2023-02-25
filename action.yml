@@ -10,6 +10,7 @@ runs:
   steps:
       - run: echo "hello"
         shell: bash
-      - run: |
-        echo "input_one: ${{ github.event.inputs.input_one }}"
+      - run: echo "input_one: ${{ github.event.inputs.input_one }}"
+        shell: bash
+        
 
