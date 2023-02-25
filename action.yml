@@ -10,6 +10,8 @@ runs:
   steps:
       - run: echo "hello"
         shell: bash
+      - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+        shell: bash
       - run: echo "${{inputs.input_one}}"
         shell: bash
       - run: ls
@@ -17,7 +19,5 @@ runs:
       - run: ls ${{ github.workspace }}
         shell: bash
       - name: Run script file
-        run: |
-           chmod +x ./test.sh
-           ./test.sh
+        run: test.sh
         shell: bash
