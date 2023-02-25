@@ -12,3 +12,12 @@ runs:
         shell: bash
       - run: echo "${{inputs.input_one}}"
         shell: bash
+      - run: echo "$CUSTOM_REPO_ENV"
+        shell: bash
+      - run: echo "$KNOWL_BACKEND_HTTP"
+        shell: bash
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+        shell: bash
