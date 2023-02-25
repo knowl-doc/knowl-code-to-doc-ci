@@ -203,5 +203,6 @@ npm install --save lexical @lexical/react @lexical/headless @lexical/yjs
 npm install --save jsdom ws dotenv
 npm install yjs y-websocket
 npm install --save cmd-ts
+npm i --save http-status-codes
 ts-node src/index.ts $RESULT_DIR
 ls
