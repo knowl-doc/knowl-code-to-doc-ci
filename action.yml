@@ -9,20 +9,20 @@ runs:
   using: "composite"
   steps:
       - run: echo "hello"
-        shell: shell
+        shell: bash
       - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-        shell: shell
+        shell: bash
       - run: echo "${{inputs.input_one}}"
-        shell: shell
+        shell: bash
       - run: ls
-        shell: shell
+        shell: bash
       - run: ls ${{ github.workspace }}
-        shell: shell
+        shell: bash
       - run: ls ${{ github.action_path }}
-        shell: shell
+        shell: bash
       - name: Run script file
         run: chmod +x "${{ github.action_path }}/test.sh"
-        shell: shell
+        shell: bash
       - name: Run script file
         run: test.sh
-        shell: shell
+        shell: bash
