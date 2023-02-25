@@ -24,7 +24,6 @@ runs:
       shell: bash
     - name: setup python environment
       uses: actions/setup-python@v4
-      shell: bash
       with:
         python-version: 3.9
     - run: ls
