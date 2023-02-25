@@ -10,7 +10,5 @@ runs:
   steps:
       - run: echo "hello"
         shell: bash
-      - run: echo "input_one: ${{ inputs.input_one }}"
+      - run: echo "${{inputs.input_one}}"
         shell: bash
-        
-
