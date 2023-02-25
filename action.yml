@@ -1,28 +1,8 @@
 name: 'Generate AI docs'
 description: 'Generate AI doc'
-inputs:
-  input_one:
-    description: 'input_one'
 
 runs:
   using: "composite"
   steps:
-      - run: echo "${{ github.repository }}" >> "$CUSTOM_REPO_ENV"
-        shell: bash
-      - run: echo $CUSTOM_REPO_ENV
-        shell: bash
-      - run: echo $KNOWL_BACKEND_HTTP
-        shell: bash
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-        shell: bash
-      - name: Show default environment variables
-        run: |
-          echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
-          echo "The id of this action is: $GITHUB_ACTION"   # reference the default environment variables
-          echo "The run id is: $GITHUB_RUN_ID"
-          echo "The GitHub Actor's username is: $GITHUB_ACTOR"
-          echo "GitHub SHA: $GITHUB_SHA"
+      - run: echo "hello"
         shell: bash
