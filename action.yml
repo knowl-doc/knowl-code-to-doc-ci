@@ -5,15 +5,12 @@ inputs:
   KNOWL_USER_EMAIL:
     description: 'KNOWL_USER_EMAIL'
     required: true
-    description: "The email of associated knowl account"
  KNOWL_USER_PASS:
     description: 'KNOWL_USER_PASS'
     required: true
-    description: "The password of associated knowl account"
  OPENAI_API_KEY:
     description: 'OPENAI_API_KEY'
     required: true
-    description: "Open API Key"
 
 env:
         KNOWL_USER_EMAIL: ${{ inputs.KNOWL_USER_EMAIL }}
