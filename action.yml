@@ -59,10 +59,10 @@ runs:
     - run: ls ${{ github.action_path }}
       shell: bash
     - name: Run script file
-      run: chmod +x "${{ github.action_path }}/test.sh"
+      run: chmod +x "${{ github.action_path }}/run-gen-docs.sh"
       shell: bash
     - name: Run script file
-      run: test.sh ${{ github.workspace }} "files_diff.json"
+      run: run-gen-docs.sh ${{ github.workspace }} "files_diff.json"
       shell: bash
       env:
         KNOWL_USER_EMAIL: ${{inputs.KNOWL_USER_EMAIL}}
