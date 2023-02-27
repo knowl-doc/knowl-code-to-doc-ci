@@ -1,5 +1,5 @@
 #!/bin/sh -uex
-echo "Knowl script running to review linked documents..."
+echo "Knowl script running to generate ai docs..."
 
 BIN_PATH="$HOME"
 WORKING_DIR="$BIN_PATH/knowl_temp"
@@ -182,13 +182,10 @@ verify_wget
 verify_unzip
 verify_tmp
 check_knowl_cli_version
-pwd
 cd $WORKING_DIR
-pwd
 $BIN_UNZIP $WORKING_DIR/$KNOWL_CODE2DOC_NAME -d $WORKING_DIR
 cd s3
 cd code_to_doc
-ls
 pip install -r requirements.txt
 python3.9 python_docs.py -p $REPO_PATH -o $RESULT_DIR -l $FILES_DIFF
 ls $RESULT_DIR
