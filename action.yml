@@ -10,6 +10,9 @@ inputs:
   OPENAI_API_KEY:
     description: OPENAI_API_KEY
     required: true
+  KNOWL_API_KEY:
+    description: KNOWL_API_KEY
+    required: true
 runs:
   using: composite
   steps:
@@ -66,3 +69,4 @@ runs:
         KNOWL_USER_EMAIL: ${{inputs.KNOWL_USER_EMAIL}}
         KNOWL_USER_PASS: ${{inputs.KNOWL_USER_PASS}}
         OPENAI_API_KEY: ${{inputs.OPENAI_API_KEY}}
+        KNOWL_API_KEY: ${{inputs.KNOWL_API_KEY}}
